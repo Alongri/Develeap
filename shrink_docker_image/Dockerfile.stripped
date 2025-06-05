@@ -1,0 +1,8 @@
+FROM golang:1.10-alpine AS build-stage
+RUN apk update && apk add binutils
+COPY app.go .
+RUN go build -o /app app.go
+RUN strip /app
+FROM scratch
+COPY --from=build-stage /app /
+CMD [ "/app" ]

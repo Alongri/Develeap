@@ -1,0 +1,6 @@
+FROM golang:1.10-alpine AS build-stage
+COPY app.go .
+RUN go build -o /app app.go
+FROM alpine
+COPY --from=build-stage /app /
+CMD [ "/app" ]
