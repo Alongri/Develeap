@@ -8,8 +8,6 @@ services:
       - es_data:/usr/share/elasticsearch/data
     networks:
       - elasticsearch-net
-    ports:
-      - "9200:9200" 
     healthcheck:
       test: ["CMD-SHELL", "curl -fs http://localhost:9200/_cluster/health || exit 1"]
       interval: 30s
@@ -29,9 +27,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 30s
-    ports:
-      - "5000:5000" 
+      start_period: 30s 
     environment:
       - ELASTICSEARCH_HOST=es
     networks:
@@ -49,6 +45,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - .flask-app/templates:/usr/share/nginx/html
     networks:
       - nginx-net
 
