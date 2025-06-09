@@ -26,6 +26,8 @@ WORKDIR /app/flask-app
 RUN npm install
 RUN npm run build
 RUN pip install -r requirements.txt
+RUN apt-get update && apt-get install -y ca-certificates
+ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 EXPOSE 5000
 

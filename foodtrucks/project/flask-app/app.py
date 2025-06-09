@@ -60,6 +60,10 @@ def test_es():
         resp["status"] = "failure"
         resp["msg"] = "Unable to reach ES"
     return jsonify(resp)
+    
+@app.route("/health")
+def health():
+    return "OK", 200    
 
 @app.route('/search')
 def search():
