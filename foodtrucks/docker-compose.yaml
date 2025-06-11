@@ -45,7 +45,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - .flask-app/templates:/usr/share/nginx/html
+      # - ./flask-app/templates:/usr/share/nginx/html
     networks:
       - nginx-net
 

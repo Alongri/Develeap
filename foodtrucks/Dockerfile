@@ -30,7 +30,6 @@ RUN apt-get update && apt-get install -y ca-certificates
 ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 EXPOSE 5000
-
 ENTRYPOINT ["python2","./app.py"]
 
 
