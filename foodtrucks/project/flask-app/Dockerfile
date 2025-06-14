@@ -19,7 +19,7 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py \
 WORKDIR /app
 
 # Copy the project folder to the docker
-COPY project/flask-app ./flask-app  
+COPY . ./flask-app  
 
 WORKDIR /app/flask-app
     
@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y ca-certificates
 ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 EXPOSE 5000
+
 ENTRYPOINT ["python2","./app.py"]
 
 
